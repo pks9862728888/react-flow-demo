@@ -97,7 +97,7 @@ function ProviderFlow(): ReactElement {
         style={{backgroundColor: "#F7F9FB"}}
       >
         <Background/>
-        <MiniMap zoomable pannable nodeClassName={nodeClassName} />
+        <MiniMap zoomable pannable nodeClassName={nodeClassName} bgColor={"aqua"} />
         <Controls />
       </ReactFlow>
     </ReactFlowProvider>
