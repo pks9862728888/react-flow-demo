@@ -3,6 +3,9 @@ import React, {ReactElement} from "react";
 import styles from './TableName.module.css';
 import {Handle, Position} from "@xyflow/react";
 
+const fixedWidthFromTop : number = 101;
+const widthBetweenTwoRows: number = 35;
+
 const TableNode = ({data}: { data: any }): ReactElement => {
   return (
     <div>
@@ -29,7 +32,7 @@ const TableNode = ({data}: { data: any }): ReactElement => {
                 type="target"
                 position={Position.Left}
                 isConnectable={true}
-                style={{top: 92 + dataRow.colSeq * 35}}
+                style={{top: fixedWidthFromTop + dataRow.colSeq * widthBetweenTwoRows}}
               />
               <div className={styles.cell}>{dataRow.fieldName}</div>
               <div className={styles.cell}>
@@ -46,7 +49,7 @@ const TableNode = ({data}: { data: any }): ReactElement => {
                 type="source"
                 position={Position.Right}
                 isConnectable={true}
-                style={{top: 92 + dataRow.colSeq * 35}}
+                style={{top: fixedWidthFromTop + dataRow.colSeq * widthBetweenTwoRows}}
               />
             </div>
           ))}

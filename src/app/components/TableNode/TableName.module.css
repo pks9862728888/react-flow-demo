@@ -6,8 +6,11 @@
 }
 
 .assetName {
-    color: #063261;
+    background-color: #118178;
+    color: #ffffff;
     padding: 0.5rem;
+    font-size: 16px;
+    border-radius: 5px;
 }
 
 /*Style div like table*/
