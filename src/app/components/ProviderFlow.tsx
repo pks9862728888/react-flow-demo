@@ -54,7 +54,9 @@ const initialNodes: Node[] = [
       datasetName: 'tableName5',
       headerColumns: tableNodeHeaderCols,
       dataRows: [{id: 1, fieldName: 'fieldAN5', transformations: []},
-        {id: 2, fieldName: 'fieldBN5', transformations: []}]
+        {id: 2, fieldName: 'fieldBN5', transformations: []},
+        {id: 3, fieldName: 'fieldBN6', transformations: []}
+      ]
     },
     position: {x: 1100, y: 100}
   }

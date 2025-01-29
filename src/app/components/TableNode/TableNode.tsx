@@ -29,7 +29,8 @@ const TableNode = ({data}: { data: any }): ReactElement => {
               <td>{dataRow.fieldName}</td>
               <td>
                 {dataRow.transformations?.map((transformation: any) => (
-                  <a href="#" key={transformation.ruleId}>{transformation.ruleId}</a>
+                  <a href="#" key={transformation.ruleId}
+                     className={styles.transformationRuleHyperlink}>{transformation.ruleId}</a>
                 ))}
               </td>
             </tr>

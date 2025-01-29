@@ -14,14 +14,15 @@
     text-align: left;
 }
 
-.styledTable thead tr {
-    /*background-color: #f2f2f2;*/
-}
-
 .styledTable th,
 .styledTable td {
     border: 1px solid #ddd;
     font-size: .75rem;
     line-height: 1rem;
     padding: 0.2rem;
+}
+
+.transformationRuleHyperlink {
+    font-size: .75rem; /* Extra small size */
+    text-decoration: underline;
 }
