@@ -3,6 +3,8 @@
     background-color: #b3eff3;
     text-align: center;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    border: 1px solid #053b42;
 }
 
 .assetName {
@@ -11,6 +13,7 @@
     padding: 0.5rem;
     font-size: 16px;
     border-radius: 5px;
+    border: 1px solid #053b42;
 }
 
 /*Style div like table*/
