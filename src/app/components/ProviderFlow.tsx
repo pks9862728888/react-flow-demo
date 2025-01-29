@@ -23,8 +23,8 @@ const initialNodes: Node[] = [
       id: 1,
       datasetName: 'RawData',
       headerColumns: tableNodeHeaderCols,
-      dataRows: [{id: 1, colSeq: 0, fieldName: 'fieldAN1', transformations: [{id: 1, ruleId: "PARSING_RULE_001", type: "PARSING"}]},
-        {id: 2, colSeq: 1, fieldName: 'fieldBN2', transformations: [{id: 2, ruleId: "PARSING_RULE_002", type: "PARSING"}]}]
+      dataRows: [{id: 1, colSeq: 0, fieldName: 'fieldAN1', transformations: [{id: 1, ruleId: "TRNS_RULE_001", type: "ENRICHMENT"}]},
+        {id: 2, colSeq: 1, fieldName: 'fieldBN2', transformations: [{id: 2, ruleId: "TRNS_RULE_002", type: "ENRICHMENT"}]}]
     },
     position: {x: 100, y: 100}
   },
