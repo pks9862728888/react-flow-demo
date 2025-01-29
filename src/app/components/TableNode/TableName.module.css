@@ -1,0 +1,27 @@
+.dataSetContainer {
+    padding: 0.5rem;
+    background-color: #b3eff3;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+.assetName {
+    color: #063261;
+}
+
+.styledTable {
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.styledTable thead tr {
+    /*background-color: #f2f2f2;*/
+}
+
+.styledTable th,
+.styledTable td {
+    border: 1px solid #ddd;
+    font-size: .75rem;
+    line-height: 1rem;
+    padding: 0.2rem;
+}
