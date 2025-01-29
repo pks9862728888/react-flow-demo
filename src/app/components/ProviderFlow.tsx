@@ -21,7 +21,7 @@ const initialNodes: Node[] = [
     id: '1', type: 'tableNode',
     data: {
       id: 1,
-      datasetName: 'tableName1',
+      datasetName: 'RawData',
       headerColumns: tableNodeHeaderCols,
       dataRows: [{id: 1, colSeq: 0, fieldName: 'fieldAN1', transformations: [{id: 1, ruleId: "PARSING_RULE_001", type: "PARSING"}]},
         {id: 2, colSeq: 1, fieldName: 'fieldBN2', transformations: [{id: 2, ruleId: "PARSING_RULE_002", type: "PARSING"}]}]
@@ -32,7 +32,7 @@ const initialNodes: Node[] = [
     id: '2', type: 'tableNode',
     data: {
       id: 2,
-      datasetName: 'tableName2',
+      datasetName: 'JsonData',
       headerColumns: tableNodeHeaderCols,
       dataRows: [{id: 1, colSeq: 0, fieldName: 'fieldAN2',
           transformations: [
@@ -46,7 +46,7 @@ const initialNodes: Node[] = [
     id: '3', type: 'tableNode',
     data: {
       id: 3,
-      datasetName: 'tableName3',
+      datasetName: 'CDM',
       headerColumns: tableNodeHeaderCols,
       dataRows: [{id: 1, colSeq: 0, fieldName: 'fieldAN3', transformations: [{id: 1, ruleId: "HarmonizedField001", type: "HRF"}]},
         {id: 2, colSeq: 1, fieldName: 'fieldBN3', transformations: []}]
@@ -57,9 +57,9 @@ const initialNodes: Node[] = [
     id: '4', type: 'tableNode',
     data: {
       id: 4,
-      datasetName: 'tableName4',
+      datasetName: 'ASIC Data Model',
       headerColumns: tableNodeHeaderCols,
-      dataRows: [{id: 1, colSeq: 0, fieldName: 'fieldAN4', transformations: [{id: 1, ruleId: "ReportingRule001", type: "RF"}]},
+      dataRows: [{id: 1, colSeq: 0, fieldName: 'fieldAN4', transformations: []},
         {id: 2, colSeq: 1, fieldName: 'fieldBN4', transformations: []}]
     },
     position: {x: 1150, y: 100}
@@ -68,14 +68,14 @@ const initialNodes: Node[] = [
     id: '5', type: 'tableNode',
     data: {
       id: 5,
-      datasetName: 'tableName5',
+      datasetName: 'MAS Data Model',
       headerColumns: tableNodeHeaderCols,
       dataRows: [{id: 1, colSeq: 0, fieldName: 'fieldAN5', transformations: []},
         {id: 2, colSeq: 1, fieldName: 'fieldBN5', transformations: []},
         {id: 3, colSeq: 2, fieldName: 'fieldBN6', transformations: []}
       ]
     },
-    position: {x: 1500, y: 100}
+    position: {x: 1150, y: 270}
   }
 ];
 
@@ -84,7 +84,7 @@ const initialEdges: EdgeBase[] = [
   {id: 'e1-2', source: '1', target: '2', sourceHandle: '1-source'},
   {id: 'e2-3', source: '2', target: '3', sourceHandle: '2-source'},
   {id: 'e3-4', source: '3', target: '4', sourceHandle: '3-source'},
-  {id: 'e4-5', source: '4', target: '5', sourceHandle: '4-source'},
+  {id: 'e3-5', source: '3', target: '5', sourceHandle: '3-source'},
 
   // Table column level lineage
   // Parsing to json layer
@@ -93,10 +93,10 @@ const initialEdges: EdgeBase[] = [
   // Json layer to harmonized fields layer
   {id: "e2-3-col1-1", source: "2", target: "3", sourceHandle: "2-1-source", targetHandle: '3-1-target'},
   {id: "e2-3-col1-2", source: "2", target: "3", sourceHandle: "2-1-source", targetHandle: '3-2-target'},
-  // Harmonized field layer to reporting field layer
+  // CDM field layer to reporting field layer (ASIC)
   {id: "e3-4-col1-1", source: "3", target: "4", sourceHandle: "3-1-source", targetHandle: '4-1-target'},
-  // Reporting fields layer to some other layer (dummy used for testing)
-  {id: "e4-5-col1-1", source: "4", target: "5", sourceHandle: "4-1-source", targetHandle: '5-1-target'}
+  // CDM field layer to reporting field layer (MAS)
+  {id: "e3-5-col1-1", source: "3", target: "5", sourceHandle: "3-1-source", targetHandle: '5-1-target'}
 ];
 
 const nodeClassName = (node: any) => node.type;
