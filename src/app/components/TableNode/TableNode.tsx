@@ -8,9 +8,11 @@ const TableNode = ({data}: { data: any }): ReactElement => {
     <div>
       {/*Left handle to connect to previous node*/}
       <Handle
+        id={data.id + "-" + "target"}
         type="target"
         position={Position.Left}
         isConnectable={true}
+        className={styles.tableConnectorLocation}
       />
       <div className={styles.dataSetContainer}>
         <div className={styles.assetName}>{data.datasetName}</div>
@@ -22,21 +24,40 @@ const TableNode = ({data}: { data: any }): ReactElement => {
           </div>
           {data.dataRows?.map((dataRow: any) => (
             <div key={dataRow.id} className={styles.row}>
+              <Handle
+                id={data.id + "-" + dataRow.id + "-target"}
+                type="target"
+                position={Position.Left}
+                isConnectable={true}
+                style={{top: 92 + dataRow.colSeq * 35}}
+              />
               <div className={styles.cell}>{dataRow.fieldName}</div>
               <div className={styles.cell}>
                 {dataRow.transformations?.map((transformation: any) => (
-                  <a href="#" key={transformation.ruleId}
-                     className={styles.transformationRuleHyperlink}>{transformation.ruleId}</a>
+                  <li key={"li-dId" + data.id + "-drId-" + dataRow.id + "-tId-" + transformation.id}
+                    className={styles.li}>
+                    <a href="#" key={transformation.ruleId}
+                       className={styles.transformationRuleHyperlink}>{transformation.ruleId}</a>
+                  </li>
                 ))}
               </div>
+              <Handle
+                id={data.id + "-" + dataRow.id + "-source"}
+                type="source"
+                position={Position.Right}
+                isConnectable={true}
+                style={{top: 92 + dataRow.colSeq * 35}}
+              />
             </div>
           ))}
         </div>
         {/*Right handle to connect to next node*/}
         <Handle
+          id={data.id + "-" + "source"}
           type="source"
           position={Position.Right}
           isConnectable={true}
+          className={styles.tableConnectorLocation}
         />
       </div>
     </div>

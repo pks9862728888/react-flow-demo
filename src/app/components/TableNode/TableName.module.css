@@ -14,10 +14,15 @@
 .table {
     display: flex;
     flex-direction: column;
+    border-spacing: 0;
 }
 
 .row {
     display: flex;
+}
+
+.row:hover {
+    background-color: #8fc1c3;
 }
 
 .cell, .header {
@@ -34,7 +39,6 @@
 .header, .row, .cell {
     font-size: .75rem;
     line-height: 1rem;
-    border-collapse: collapse;
 }
 
 .header {
@@ -44,4 +48,14 @@
 .transformationRuleHyperlink {
     font-size: .75rem; /* Extra small size */
     text-decoration: underline;
+}
+
+.tableConnectorLocation {
+    top: 1.5rem;
+}
+
+.li {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
 }
