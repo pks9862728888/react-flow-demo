@@ -7,19 +7,38 @@
 
 .assetName {
     color: #063261;
+    padding: 0.5rem;
 }
 
-.styledTable {
-    border-collapse: collapse;
+/*Style div like table*/
+.table {
+    display: flex;
+    flex-direction: column;
+}
+
+.row {
+    display: flex;
+}
+
+.cell, .header {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ddd;
+    max-width: 150px;
+    min-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
     text-align: left;
 }
 
-.styledTable th,
-.styledTable td {
-    border: 1px solid #ddd;
+.header, .row, .cell {
     font-size: .75rem;
     line-height: 1rem;
-    padding: 0.2rem;
+    border-collapse: collapse;
+}
+
+.header {
+    font-weight: bold;
 }
 
 .transformationRuleHyperlink {

@@ -35,7 +35,7 @@ const initialNodes: Node[] = [
       dataRows: [{id: 1, fieldName: 'fieldAN2', transformations: [{id: 1, ruleId: "JSON_RATES_001", type: "JSON"}]},
         {id: 2, fieldName: 'fieldBN2', transformations: []}]
     },
-    position: {x: 350, y: 100}
+    position: {x: 450, y: 100}
   },
   {
     id: '3', type: 'tableNode',
@@ -45,7 +45,7 @@ const initialNodes: Node[] = [
       dataRows: [{id: 1, fieldName: 'fieldAN3', transformations: [{id: 1, ruleId: "HarmonizedField001", type: "HRF"}]},
         {id: 2, fieldName: 'fieldBN3', transformations: []}]
     },
-    position: {x: 600, y: 100}
+    position: {x: 800, y: 100}
   },
   {
     id: '4', type: 'tableNode',
@@ -55,7 +55,7 @@ const initialNodes: Node[] = [
       dataRows: [{id: 1, fieldName: 'fieldAN4', transformations: [{id: 1, ruleId: "ReportingRule001", type: "RF"}]},
         {id: 2, fieldName: 'fieldBN4', transformations: []}]
     },
-    position: {x: 850, y: 100}
+    position: {x: 1150, y: 100}
   },
   {
     id: '5', type: 'tableNode',
@@ -67,15 +67,19 @@ const initialNodes: Node[] = [
         {id: 3, fieldName: 'fieldBN6', transformations: []}
       ]
     },
-    position: {x: 1100, y: 100}
+    position: {x: 1500, y: 100}
   }
 ];
 
 const initialEdges: EdgeBase[] = [
+  // Table level lineage
   {id: 'e1-2', source: '1', target: '2'},
   {id: 'e2-3', source: '2', target: '3'},
   {id: 'e3-4', source: '3', target: '4'},
-  {id: 'e4-5', source: '4', target: '5'}
+  {id: 'e4-5', source: '4', target: '5'},
+
+  // Table column level lineage
+
 ];
 
 const nodeClassName = (node: any) => node.type;
@@ -97,7 +101,7 @@ function ProviderFlow(): ReactElement {
         style={{backgroundColor: "#F7F9FB"}}
       >
         <Background/>
-        <MiniMap zoomable pannable nodeClassName={nodeClassName} />
+        <MiniMap zoomable pannable nodeClassName={nodeClassName} bgColor={"aqua"} />
         <Controls />
       </ReactFlow>
     </ReactFlowProvider>

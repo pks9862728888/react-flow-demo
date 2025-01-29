@@ -14,28 +14,24 @@ const TableNode = ({data}: { data: any }): ReactElement => {
       />
       <div className={styles.dataSetContainer}>
         <div className={styles.assetName}>{data.datasetName}</div>
-        <table className={styles.styledTable}>
-          <thead>
-          <tr>
+        <div className={styles.table}>
+          <div className={styles.row}>
             {data.headerColumns?.map((headerCol: string) => (
-              <th key={headerCol}>{headerCol}</th>
+              <div key={headerCol} className={styles.header}>{headerCol}</div>
             ))}
-          </tr>
-          </thead>
-          <tbody>
+          </div>
           {data.dataRows?.map((dataRow: any) => (
-            <tr key={dataRow.id}>
-              <td>{dataRow.fieldName}</td>
-              <td>
+            <div key={dataRow.id} className={styles.row}>
+              <div className={styles.cell}>{dataRow.fieldName}</div>
+              <div className={styles.cell}>
                 {dataRow.transformations?.map((transformation: any) => (
                   <a href="#" key={transformation.ruleId}
                      className={styles.transformationRuleHyperlink}>{transformation.ruleId}</a>
                 ))}
-              </td>
-            </tr>
+              </div>
+            </div>
           ))}
-          </tbody>
-        </table>
+        </div>
         {/*Right handle to connect to next node*/}
         <Handle
           type="source"
