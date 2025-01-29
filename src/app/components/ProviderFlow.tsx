@@ -1,6 +1,15 @@
 "use client";
 import React, {ReactElement, useCallback} from 'react';
-import {addEdge, Background, Node, ReactFlow, ReactFlowProvider, useEdgesState, useNodesState} from '@xyflow/react';
+import {
+  addEdge,
+  Background, Controls,
+  MiniMap,
+  Node,
+  ReactFlow,
+  ReactFlowProvider,
+  useEdgesState,
+  useNodesState
+} from '@xyflow/react';
 
 import '@xyflow/react/dist/style.css';
 import {EdgeBase} from "@xyflow/system";
@@ -69,6 +78,8 @@ const initialEdges: EdgeBase[] = [
   {id: 'e4-5', source: '4', target: '5'}
 ];
 
+const nodeClassName = (node: any) => node.type;
+
 function ProviderFlow(): ReactElement {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
@@ -86,6 +97,8 @@ function ProviderFlow(): ReactElement {
         style={{backgroundColor: "#F7F9FB"}}
       >
         <Background/>
+        <MiniMap zoomable pannable nodeClassName={nodeClassName} />
+        <Controls />
       </ReactFlow>
     </ReactFlowProvider>
   );
