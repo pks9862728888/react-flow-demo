@@ -10,7 +10,6 @@ const TableNode = ({data}: { data: any }): ReactElement => {
       <Handle
         type="target"
         position={Position.Left}
-        onConnect={(params) => console.log('handle onConnect', params)}
         isConnectable={true}
       />
       <div className={styles.dataSetContainer}>
@@ -41,7 +40,6 @@ const TableNode = ({data}: { data: any }): ReactElement => {
         <Handle
           type="source"
           position={Position.Right}
-          onConnect={(params) => console.log('handle onConnect', params)}
           isConnectable={true}
         />
       </div>
