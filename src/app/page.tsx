@@ -163,7 +163,6 @@ const initialEdges: Edge[] = [
 
 export default function Home(): React.JSX.Element {
   const [lineageData, setLineageData] = useState<LineageDataType>({nodes: initialNodes, edges: initialEdges});
-  const [selectedNode, setSelectedNode] = useState<SelectedNodeType>();
 
   // Define event action to trigger when node is selected
   const onNodeSelect: (selectedNode: SelectedNodeType) => void = (newSelectedNode: SelectedNodeType) => {
@@ -189,9 +188,6 @@ export default function Home(): React.JSX.Element {
       });
       return ld;
     });
-
-    // Update selected node
-    setSelectedNode({nodeId: newSelectedNodeId, dataRowId: newSelectedDataRowId});
     console.log("Lineage data: ", lineageData);
   }
 
