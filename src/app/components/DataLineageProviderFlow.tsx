@@ -27,13 +27,6 @@ const DataLineageProviderFlow: React.FC<DataLineageProviderFlowPropType> = (prop
   const [edges, setEdges, onEdgesChange] = useEdgesState(lineageData.edges);
   useCallback((params: EdgeBase): void => setEdges((els) => addEdge(params, els)), []);
 
-  const onNodeClick = (event: ReactMouseEvent, node: Node) => {
-    const nodeId: string = node.id;
-    // setSelectedNode(node.id);
-    console.log("Clicked node: {}", node);
-    console.log("Emitted event: {}", event);
-  };
-
   return (
     <ReactFlowProvider>
       <ReactFlow
@@ -41,7 +34,6 @@ const DataLineageProviderFlow: React.FC<DataLineageProviderFlowPropType> = (prop
         edges={edges}
         onNodesChange={onNodesChange}
         onEdgesChange={onEdgesChange}
-        onNodeClick={onNodeClick}
         nodeTypes={nodeTypes}
         fitView
         style={{backgroundColor: "#F7F9FB"}}

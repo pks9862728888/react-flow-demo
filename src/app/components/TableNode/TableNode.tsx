@@ -2,11 +2,20 @@
 import React, {ReactElement} from "react";
 import styles from './TableName.module.css';
 import {Handle, Position} from "@xyflow/react";
+import {TableNodeDataType} from "@/app/types/tablenode/TableNodeDataType";
 
-const fixedWidthFromTop : number = 101;
+const fixedWidthFromTop: number = 101;
 const widthBetweenTwoRows: number = 35;
 
-const TableNode = ({data}: { data: any }): ReactElement => {
+const TableNode = ({data}: { data: TableNodeDataType }): ReactElement => {
+  const triggerNodeSelection = (dataRowId: string) => {
+    if (data.triggerNodeSelection) {
+      data.triggerNodeSelection({nodeId: data.id, dataRowId: dataRowId});
+    } else {
+      console.error("No triggerNodeSelection function found, data: ", data);
+    }
+  }
+  console.log("data came onselect:", data);
   return (
     <div>
       {/*Left handle to connect to previous node*/}
@@ -26,7 +35,9 @@ const TableNode = ({data}: { data: any }): ReactElement => {
             ))}
           </div>
           {data.dataRows?.map((dataRow: any) => (
-            <div key={dataRow.id} className={styles.row}>
+            <div key={dataRow.id}
+                 className={`${styles.row} ${dataRow.selected ? styles.rowSelected : ''}`}
+                 onClick={() => triggerNodeSelection(dataRow.id)}>
               <Handle
                 id={data.id + "-" + dataRow.id + "-target"}
                 type="target"
@@ -38,7 +49,7 @@ const TableNode = ({data}: { data: any }): ReactElement => {
               <div className={styles.cell}>
                 {dataRow.transformations?.map((transformation: any) => (
                   <li key={"li-dId" + data.id + "-drId-" + dataRow.id + "-tId-" + transformation.id}
-                    className={styles.li}>
+                      className={styles.li}>
                     <a href="#" key={transformation.ruleId}
                        className={styles.transformationRuleHyperlink}>{transformation.ruleId}</a>
                   </li>

@@ -1,6 +1,7 @@
-import {Edge, Node} from "@xyflow/react";
+import {Edge} from "@xyflow/react";
+import {ReactFlowNode} from "@/app/types/ReactFlowNode";
 
 export type LineageDataType = {
-  nodes: Node[],
+  nodes: ReactFlowNode[],
   edges: Edge[]
 }
