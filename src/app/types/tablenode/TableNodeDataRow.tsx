@@ -1,6 +1,6 @@
 import {TableNodeDataRowTransformationType} from "@/app/types/tablenode/TableNodeDataRowTransformationType";
 
-export type TableNodeDataRowType = {
+export type TableNodeDataRow = {
   id: string,
   colSeq: number,
   fieldName: string,

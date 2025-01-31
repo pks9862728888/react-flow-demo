@@ -15,7 +15,6 @@ const TableNode = ({data}: { data: TableNodeDataType }): ReactElement => {
       console.error("No triggerNodeSelection function found, data: ", data);
     }
   }
-  console.log("data came onselect:", data);
   return (
     <div>
       {/*Left handle to connect to previous node*/}
@@ -47,13 +46,15 @@ const TableNode = ({data}: { data: TableNodeDataType }): ReactElement => {
               />
               <div className={styles.cell}>{dataRow.fieldName}</div>
               <div className={styles.cell}>
-                {dataRow.transformations?.map((transformation: any) => (
-                  <li key={"li-dId" + data.id + "-drId-" + dataRow.id + "-tId-" + transformation.id}
-                      className={styles.li}>
-                    <a href="#" key={transformation.ruleId}
-                       className={styles.transformationRuleHyperlink}>{transformation.ruleId}</a>
-                  </li>
-                ))}
+                <ul>
+                  {dataRow.transformations?.map((transformation: any) => (
+                    <li key={"li-dId" + data.id + "-drId-" + dataRow.id + "-tId-" + transformation.id}
+                        className={styles.li}>
+                      <a href="#" key={transformation.ruleId}
+                         className={styles.transformationRuleHyperlink}>{transformation.ruleId}</a>
+                    </li>
+                  ))}
+                </ul>
               </div>
               <Handle
                 id={data.id + "-" + dataRow.id + "-source"}
