@@ -9,7 +9,7 @@ import {DASH_SOURCE, DASH_TARGET} from "@/app/constants/appStringConstants";
 import getEdgeHandleKeyPrefix from "@/app/functions/tablenode/getEdgeHandleKeyPrefix";
 import {FaChevronDown, FaChevronUp} from "react-icons/fa";
 
-const fixedHeightFromTop: number = 80;
+const fixedHeightFromTop: number = 103;
 const heightBetweenTwoRows: number = 20;
 const transformationRuleHeight: number = 12;
 
