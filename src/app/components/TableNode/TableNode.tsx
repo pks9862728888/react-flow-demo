@@ -1,5 +1,5 @@
 "use client";
-import React, {ReactElement} from "react";
+import React, {ReactElement, useState} from "react";
 import styles from './TableName.module.css';
 import {Handle, Position} from "@xyflow/react";
 import {TableNodeDataType} from "@/app/types/tablenode/TableNodeDataType";
@@ -7,12 +7,15 @@ import {TableNodeDataRow} from "@/app/types/tablenode/TableNodeDataRow";
 import getEdgeHandleKey from "@/app/functions/tablenode/getEdgeHandleKey";
 import {DASH_SOURCE, DASH_TARGET} from "@/app/constants/appStringConstants";
 import getEdgeHandleKeyPrefix from "@/app/functions/tablenode/getEdgeHandleKeyPrefix";
+import {FaChevronDown, FaChevronUp} from "react-icons/fa";
 
 const fixedHeightFromTop: number = 80;
 const heightBetweenTwoRows: number = 20;
 const transformationRuleHeight: number = 12;
 
 const TableNode = ({data}: { data: TableNodeDataType }): ReactElement => {
+  const [showTable, setShowTable] = useState(false);
+  const toggleShowTable = (): void => setShowTable(!showTable);
   const triggerNodeSelection = (dataRowId: string) => {
     if (data.triggerNodeSelection) {
       data.triggerNodeSelection({nodeId: data.id, dataRowId: dataRowId});
@@ -52,8 +55,12 @@ const TableNode = ({data}: { data: TableNodeDataType }): ReactElement => {
       />
       <div className={styles.dataSetContainer}>
         <div className={styles.assetName}>{data.datasetName}</div>
-        {/*Table starts here*/}
-        <div className={styles.table}>
+        <div className={styles.fieldsCount} onClick={toggleShowTable}>
+          <span className={styles.iconShowOrCollapse}>{showTable ? <FaChevronUp /> : <FaChevronDown />}</span>
+          {data.dataRows ? data.dataRows.length : 0} fields
+        </div>
+        {/*Table starts here, show only when its in expanded mode*/}
+        {showTable && <div className={styles.table}>
           <div className={styles.row}>
             {data.headerColumns?.map((headerCol: string) => (
               <div key={headerCol} className={styles.header}>{headerCol}</div>
@@ -94,6 +101,7 @@ const TableNode = ({data}: { data: TableNodeDataType }): ReactElement => {
             </div>
           ))}
         </div>
+        }
         {/*Right handle to connect to next node*/}
         <Handle
           id={data.id + "-" + "source"}
