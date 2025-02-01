@@ -55,6 +55,16 @@ export const initialNodes: ReactFlowNode[] = [
           fieldName: 'fieldBN2',
           selected: false,
           transformations: []
+        },
+        {
+          id: '3',
+          key: '2-3',
+          colSeq: 2,
+          fieldName: 'fieldBN3',
+          selected: false,
+          transformations: [
+            {id: 1, ruleId: "TRNS_RULE_001", type: "ENRICHMENT"}
+          ]
         }]
     },
     position: {x: 450, y: 100}
@@ -188,6 +198,14 @@ export const initialEdges: Edge[] = [
     target: "3",
     sourceHandle: "2-1-source",
     targetHandle: '3-2-target',
+    selected: false
+  },
+  {
+    id: "e2-3-col3-1",
+    source: "2",
+    target: "3",
+    sourceHandle: "2-3-source",
+    targetHandle: '3-1-target',
     selected: false
   },
   // CDM field layer to reporting field layer (ASIC)

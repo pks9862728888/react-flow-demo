@@ -1,19 +1,47 @@
 "use client";
-import React, {ReactElement} from "react";
+import React, {ReactElement, useState} from "react";
 import styles from './TableName.module.css';
 import {Handle, Position} from "@xyflow/react";
 import {TableNodeDataType} from "@/app/types/tablenode/TableNodeDataType";
+import {TableNodeDataRow} from "@/app/types/tablenode/TableNodeDataRow";
+import getEdgeHandleKey from "@/app/functions/tablenode/getEdgeHandleKey";
+import {DASH_SOURCE, DASH_TARGET} from "@/app/constants/appStringConstants";
+import getEdgeHandleKeyPrefix from "@/app/functions/tablenode/getEdgeHandleKeyPrefix";
+import {FaChevronDown, FaChevronUp} from "react-icons/fa";
 
-const fixedWidthFromTop: number = 101;
-const widthBetweenTwoRows: number = 35;
+const fixedHeightFromTop: number = 80;
+const heightBetweenTwoRows: number = 20;
+const transformationRuleHeight: number = 12;
 
 const TableNode = ({data}: { data: TableNodeDataType }): ReactElement => {
+  const [showTable, setShowTable] = useState(false);
+  const toggleShowTable = (): void => setShowTable(!showTable);
   const triggerNodeSelection = (dataRowId: string) => {
     if (data.triggerNodeSelection) {
       data.triggerNodeSelection({nodeId: data.id, dataRowId: dataRowId});
     } else {
       console.error("No triggerNodeSelection function found, data: ", data);
     }
+  }
+  let transformationRuleAdjustedDelta: number = 0;
+  // Cache is for storing height,
+  // Reason is while html rendering both right and left handle
+  // should contribute to transformationRuleRowsCount only once
+  const heightMapCache: Map<string, number> = new Map<string, number>();
+  const calculateHeightFromTopForHandle = (dataRow: TableNodeDataRow): number => {
+    const handleKey: string = getEdgeHandleKeyPrefix(data.id, dataRow.id);
+    if (!heightMapCache.has(handleKey)) {
+      // Calculate value from top of table
+      const top: number = fixedHeightFromTop + // fixed height from top
+        dataRow.colSeq * heightBetweenTwoRows + // adjustment for padding between two rows
+        transformationRuleAdjustedDelta; // adjustment for multiple rows
+      heightMapCache.set(handleKey, top);
+      // Update transformationRuleAdjustedDelta due to extra space occupied by transformations
+      let transformationRuleRowsCount: number =
+        dataRow.transformations?.length > 0 ? (dataRow.transformations.length - 1) : 0;
+      transformationRuleAdjustedDelta = transformationRuleAdjustedDelta + transformationRuleRowsCount * transformationRuleHeight;
+    }
+    return heightMapCache.get(handleKey) as number;
   }
   return (
     <div>
@@ -27,7 +55,12 @@ const TableNode = ({data}: { data: TableNodeDataType }): ReactElement => {
       />
       <div className={styles.dataSetContainer}>
         <div className={styles.assetName}>{data.datasetName}</div>
-        <div className={styles.table}>
+        <div className={styles.fieldsCount} onClick={toggleShowTable}>
+          <span className={styles.iconShowOrCollapse}>{showTable ? <FaChevronUp /> : <FaChevronDown />}</span>
+          {data.dataRows ? data.dataRows.length : 0} fields
+        </div>
+        {/*Table starts here, show only when its in expanded mode*/}
+        {showTable && <div className={styles.table}>
           <div className={styles.row}>
             {data.headerColumns?.map((headerCol: string) => (
               <div key={headerCol} className={styles.header}>{headerCol}</div>
@@ -37,12 +70,13 @@ const TableNode = ({data}: { data: TableNodeDataType }): ReactElement => {
             <div key={dataRow.id}
                  className={`${styles.row} ${dataRow.selected ? styles.rowSelected : ''}`}
                  onClick={() => triggerNodeSelection(dataRow.id)}>
+              {/*Left handle for dataRow*/}
               <Handle
-                id={data.id + "-" + dataRow.id + "-target"}
+                id={getEdgeHandleKey(data.id, dataRow.id, DASH_TARGET)}
                 type="target"
                 position={Position.Left}
                 isConnectable={true}
-                style={{top: fixedWidthFromTop + dataRow.colSeq * widthBetweenTwoRows}}
+                style={{top: calculateHeightFromTopForHandle(dataRow)}}
               />
               <div className={styles.cell}>{dataRow.fieldName}</div>
               <div className={styles.cell}>
@@ -56,16 +90,18 @@ const TableNode = ({data}: { data: TableNodeDataType }): ReactElement => {
                   ))}
                 </ul>
               </div>
+              {/*Right handle for dataRow*/}
               <Handle
-                id={data.id + "-" + dataRow.id + "-source"}
+                id={getEdgeHandleKey(data.id, dataRow.id, DASH_SOURCE)}
                 type="source"
                 position={Position.Right}
                 isConnectable={true}
-                style={{top: fixedWidthFromTop + dataRow.colSeq * widthBetweenTwoRows}}
+                style={{top: calculateHeightFromTopForHandle(dataRow)}}
               />
             </div>
           ))}
         </div>
+        }
         {/*Right handle to connect to next node*/}
         <Handle
           id={data.id + "-" + "source"}
