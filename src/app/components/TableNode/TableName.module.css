@@ -27,6 +27,11 @@
     display: flex;
 }
 
+.rowSelected {
+    border: 1px solid #118178;
+    background-color: #33ccff;
+}
+
 .row:hover {
     background-color: #8fc1c3;
 }

@@ -9,8 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@types/lodash": "^4.17.15",
     "@xyflow/react": "^12.4.2",
     "bootstrap": "^5.3.3",
+    "lodash": "^4.17.21",
     "next": "15.1.6",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
