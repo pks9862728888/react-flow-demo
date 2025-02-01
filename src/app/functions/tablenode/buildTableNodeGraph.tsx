@@ -1,8 +1,7 @@
 import {Edge} from "@xyflow/react";
-import lodash from "lodash";
-import {DASH_SOURCE, DASH_TARGET} from "@/app/constants/appStringConstants";
 import {putIfAbsentInMap} from "@/app/functions/utils/mapUtils";
 import {logMapSetObject} from "@/app/functions/utils/logUtils";
+import extractKeyFromEdgeHandle from "@/app/functions/tablenode/getKeyFromEdgeHandle";
 
 // When you click a row you will get dataRowId and dataId (which is equal to nodeId)
 // Then while you iterate through all node data row, check if dataId - dataRowId is adjacent
@@ -16,6 +15,8 @@ import {logMapSetObject} from "@/app/functions/utils/logUtils";
 const buildTableNodeGraph = (edges: Edge[]): Map<string, Set<string>> => {
   const adjNodesMap: Map<string, Set<string>> = new Map<string, Set<string>>();
   edges.forEach((edge: Edge): void => {
+    // Only tableRow will contain both sourceHandle and targetHandle
+    // Other type of edge linkage between nodes will not have sourceHandle and targetHandle
     if (edge.sourceHandle && edge.targetHandle) {
       const sourceKey: string = extractKeyFromEdgeHandle(edge.sourceHandle);
       const targetKey: string = extractKeyFromEdgeHandle(edge.targetHandle);
@@ -27,11 +28,6 @@ const buildTableNodeGraph = (edges: Edge[]): Map<string, Set<string>> => {
   });
   logMapSetObject(adjNodesMap, "TableNode adjacencyList:");
   return adjNodesMap;
-}
-
-const extractKeyFromEdgeHandle = (edgeHandle: string): string => {
-  edgeHandle = lodash.trimEnd(edgeHandle, DASH_SOURCE);
-  return lodash.trimEnd(edgeHandle, DASH_TARGET);
 }
 
 export default buildTableNodeGraph;

@@ -7,7 +7,6 @@ const buildGraphLineageDataMap =
     for (const key of adjList.keys()) {
       const lineageData: Set<string> = buildLineageData(adjList, key);
       lineageDataMap.set(key, lineageData);
-      console.log(`Lineage data for key: ${key} is: ` + [...lineageData]);
     }
     logMapSetObject(lineageDataMap, "LineageData map:");
     return lineageDataMap;
