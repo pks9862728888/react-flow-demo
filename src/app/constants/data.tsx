@@ -2,6 +2,7 @@ import {ReactFlowNode} from "@/app/types/ReactFlowNode";
 import {tableNodeHeaderCols} from "@/app/constants/tableNodeHeaderCols";
 import {Edge} from "@xyflow/react";
 
+// NodeId should be equal to dataId because nodeId can't be accessed
 export const initialNodes: ReactFlowNode[] = [
   {
     id: '1',
@@ -12,6 +13,7 @@ export const initialNodes: ReactFlowNode[] = [
       headerColumns: tableNodeHeaderCols,
       dataRows: [{
         id: '1',
+        key: '1-1',
         colSeq: 0,
         fieldName: 'fieldAN1',
         transformations: [{id: 1, ruleId: "TRNS_RULE_001", type: "ENRICHMENT"}],
@@ -19,6 +21,7 @@ export const initialNodes: ReactFlowNode[] = [
       },
         {
           id: '2',
+          key: '1-2',
           colSeq: 1,
           fieldName: 'fieldBN2',
           transformations: [{id: 2, ruleId: "TRNS_RULE_002", type: "ENRICHMENT"}],
@@ -36,6 +39,7 @@ export const initialNodes: ReactFlowNode[] = [
       headerColumns: tableNodeHeaderCols,
       dataRows: [{
         id: '1',
+        key: '2-1',
         colSeq: 0,
         fieldName: 'fieldAN2',
         selected: false,
@@ -46,6 +50,7 @@ export const initialNodes: ReactFlowNode[] = [
       },
         {
           id: '2',
+          key: '2-2',
           colSeq: 1,
           fieldName: 'fieldBN2',
           selected: false,
@@ -62,10 +67,21 @@ export const initialNodes: ReactFlowNode[] = [
       datasetName: 'CDM',
       headerColumns: tableNodeHeaderCols,
       dataRows: [{
-        id: '1', colSeq: 0, fieldName: 'fieldAN3', selected: false,
+        id: '1',
+        key: '3-1',
+        colSeq: 0,
+        fieldName: 'fieldAN3',
+        selected: false,
         transformations: [{id: 1, ruleId: "HarmonizedField001", type: "HRF"}]
       },
-        {id: '2', colSeq: 1, fieldName: 'fieldBN3', selected: false, transformations: []}]
+        {
+          id: '2',
+          key: '3-2',
+          colSeq: 1,
+          fieldName: 'fieldBN3',
+          selected: false,
+          transformations: []
+        }]
     },
     position: {x: 800, y: 100}
   },
@@ -76,8 +92,22 @@ export const initialNodes: ReactFlowNode[] = [
       id: '4',
       datasetName: 'ASIC Data Model',
       headerColumns: tableNodeHeaderCols,
-      dataRows: [{id: '1', colSeq: 0, fieldName: 'fieldAN4', selected: false, transformations: []},
-        {id: '2', colSeq: 1, fieldName: 'fieldBN4', selected: false, transformations: []}]
+      dataRows: [{
+        id: '1',
+        key: '4-1',
+        colSeq: 0,
+        fieldName: 'fieldAN4',
+        selected: false,
+        transformations: []
+      },
+        {
+          id: '2',
+          key: '4-2',
+          colSeq: 1,
+          fieldName: 'fieldBN4',
+          selected: false,
+          transformations: []
+        }]
     },
     position: {x: 1150, y: 100}
   },
@@ -88,9 +118,30 @@ export const initialNodes: ReactFlowNode[] = [
       id: '5',
       datasetName: 'MAS Data Model',
       headerColumns: tableNodeHeaderCols,
-      dataRows: [{id: '1', colSeq: 0, fieldName: 'fieldAN5', selected: false, transformations: []},
-        {id: '2', colSeq: 1, fieldName: 'fieldBN5', selected: false, transformations: []},
-        {id: '3', colSeq: 2, fieldName: 'fieldBN6', selected: false, transformations: []}
+      dataRows: [{
+        id: '1',
+        key: '5-1',
+        colSeq: 0,
+        fieldName: 'fieldAN5',
+        selected: false,
+        transformations: []
+      },
+        {
+          id: '2',
+          key: '5-2',
+          colSeq: 1,
+          fieldName: 'fieldBN5',
+          selected: false,
+          transformations: []
+        },
+        {
+          id: '3',
+          key: '5-3',
+          colSeq: 2,
+          fieldName: 'fieldBN6',
+          selected: false,
+          transformations: []
+        }
       ]
     },
     position: {x: 1150, y: 270}
@@ -150,6 +201,11 @@ export const initialEdges: Edge[] = [
   },
   // CDM field layer to reporting field layer (MAS)
   {
-    id: "e3-5-col1-1", source: "3", target: "5", sourceHandle: "3-1-source", targetHandle: '5-1-target', selected: false
+    id: "e3-5-col1-1",
+    source: "3",
+    target: "5",
+    sourceHandle: "3-1-source",
+    targetHandle: '5-1-target',
+    selected: false
   }
 ];

@@ -2,7 +2,8 @@ import {TableNodeDataRowTransformationType} from "@/app/types/tablenode/TableNod
 
 export type TableNodeDataRow = {
   id: string,
-  colSeq: number,
+  key: string, // dataNodeId - dataRowId
+  colSeq: number, // 0 indexed
   fieldName: string,
   selected: boolean,
   transformations: TableNodeDataRowTransformationType[]
