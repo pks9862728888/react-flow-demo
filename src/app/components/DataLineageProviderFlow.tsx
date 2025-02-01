@@ -43,7 +43,7 @@ function doOnTableNodeRowSelection(
         const adjacentNodes: Set<string> = lineageDataMap.get(selectedFieldKey) ?? new Set<string>();
         return oldNodes.map((oldNode: ReactFlowNode): ReactFlowNode => {
           let newNode: ReactFlowNode = cloneDeep(oldNode);
-          updateSelectionDataInTableNode(newNode, adjacentNodes);
+          updateSelectionDataInTableNode(newNode, adjacentNodes, selectedFieldKey);
           return newNode;
         });
       }

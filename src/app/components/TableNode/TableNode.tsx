@@ -52,6 +52,7 @@ const TableNode = ({data}: { data: TableNodeDataType }): ReactElement => {
       />
       <div className={styles.dataSetContainer}>
         <div className={styles.assetName}>{data.datasetName}</div>
+        {/*Table starts here*/}
         <div className={styles.table}>
           <div className={styles.row}>
             {data.headerColumns?.map((headerCol: string) => (
@@ -62,6 +63,7 @@ const TableNode = ({data}: { data: TableNodeDataType }): ReactElement => {
             <div key={dataRow.id}
                  className={`${styles.row} ${dataRow.selected ? styles.rowSelected : ''}`}
                  onClick={() => triggerNodeSelection(dataRow.id)}>
+              {/*Left handle for dataRow*/}
               <Handle
                 id={getEdgeHandleKey(data.id, dataRow.id, DASH_TARGET)}
                 type="target"
@@ -81,6 +83,7 @@ const TableNode = ({data}: { data: TableNodeDataType }): ReactElement => {
                   ))}
                 </ul>
               </div>
+              {/*Right handle for dataRow*/}
               <Handle
                 id={getEdgeHandleKey(data.id, dataRow.id, DASH_SOURCE)}
                 type="source"
