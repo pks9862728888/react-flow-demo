@@ -27,7 +27,7 @@ $$
             asset_id      BIGINT REFERENCES asset (id),
             asset_data_id BIGINT REFERENCES asset_data (id),
             rule_id       VARCHAR(255) NOT NULL,
-            description   TEXT         NOT NULL,
+            rule          TEXT         NOT NULL,
             type          VARCHAR(255) NOT NULL,
             created       TIMESTAMP    NOT NULL,
             updated       TIMESTAMP    NOT NULL
