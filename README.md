@@ -38,3 +38,8 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 npm install @xyflow/react
 
 https://reactflow.dev/examples/misc/use-react-flow-hook
+
+## To start docker container
+```shell
+docker run --name reactflowdemo -e POSTGRESQL_DATABASE=reactflowdemo -e POSTGRESQL_USERNAME=root -e POSTGRESQL_PASSWORD=testpwd -p 5432:5432 -d bitnami/postgresql:14.15.0
+```
