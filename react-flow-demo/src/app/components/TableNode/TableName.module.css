@@ -12,7 +12,7 @@
     --primary-color: #ffffff; /* White */
     --secondary-color: #053b42; /* Dark Teal */
     --table-text-color: #000000; /* Black */
-    --table-border-color: rgba(17, 129, 120, 0.4); /* Light Aqua */
+    --table-border-color: rgba(17, 129, 120, 0.2); /* Light Aqua */
     --table-border-style: 1px solid var(--table-border-color);
 }
 
