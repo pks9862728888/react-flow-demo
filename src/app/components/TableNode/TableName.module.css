@@ -12,6 +12,7 @@
     --primary-color: #ffffff; /* White */
     --secondary-color: #053b42; /* Dark Teal */
     --table-text-color: #000000; /* Black */
+    --table-border-color: rgba(17, 129, 120, 0.4); /* light aqua */
 }
 
 .dataSetContainer, .assetName {
@@ -74,10 +75,10 @@
 .cell, .header {
     flex: 1;
     padding: var(--table-data-padding);
-    border: 1px solid rgba(17, 129, 120, 0.4);
     overflow: hidden;
     text-overflow: ellipsis;
     text-align: left;
+    border: 1px solid var(--table-border-color);
 }
 
 .header {
