@@ -40,6 +40,7 @@
     line-height: var(--table-row-line-height);
     padding-bottom: var(--consistent-padding);
     text-align: left;
+    font-weight: bold;
 }
 
 /*Style div like table*/
@@ -53,13 +54,13 @@
     display: flex;
 }
 
+.row:hover {
+    background-color: #8fc1c3;
+}
+
 .rowSelected {
     border: 1px solid #118178;
     background-color: #33ccff;
-}
-
-.row:hover {
-    background-color: #8fc1c3;
 }
 
 .cell, .header {

@@ -15,14 +15,7 @@ const transformationRuleHeight: number = 12;
 
 const TableNode = ({data}: { data: TableNodeDataType }): ReactElement => {
   const triggerNodeSelection = (dataRowId: string) => {
-    if (data.triggerNodeSelection) {
-      data.triggerNodeSelection({nodeId: data.id, dataRowId: dataRowId});
-    }
-  }
-  const triggerNodeExpansion = (): void => {
-    if (data.triggerNodeExpansionToggle) {
-      data.triggerNodeExpansionToggle(!data.expandNode);
-    }
+    data.triggerNodeSelection?.({nodeId: data.id, dataRowId: dataRowId});
   }
   let transformationRuleAdjustedDelta: number = 0;
   // Cache is for storing height,
@@ -40,7 +33,8 @@ const TableNode = ({data}: { data: TableNodeDataType }): ReactElement => {
       // Update transformationRuleAdjustedDelta due to extra space occupied by transformations
       let transformationRuleRowsCount: number =
         dataRow.transformations?.length > 0 ? (dataRow.transformations.length - 1) : 0;
-      transformationRuleAdjustedDelta = transformationRuleAdjustedDelta + transformationRuleRowsCount * transformationRuleHeight;
+      transformationRuleAdjustedDelta = transformationRuleAdjustedDelta +
+        transformationRuleRowsCount * transformationRuleHeight;
     }
     return heightMapCache.get(handleKey) as number;
   }
@@ -56,7 +50,8 @@ const TableNode = ({data}: { data: TableNodeDataType }): ReactElement => {
       />
       <div className={styles.dataSetContainer}>
         <div className={styles.assetName}>{data.datasetName}</div>
-        <div className={`${styles.fieldsCount} ${styles.cursorPointer}`} onClick={triggerNodeExpansion}
+        <div className={`${styles.fieldsCount} ${styles.cursorPointer}`}
+             onClick={() => data.triggerNodeExpansionToggle?.(!data.expandNode)}
              role="Toggle table node expansion">
           <span className={styles.iconShowOrCollapse}>{data.expandNode ? <FaChevronUp/> : <FaChevronDown/>}</span>
           {data.dataRows ? data.dataRows.length : 0} fields
