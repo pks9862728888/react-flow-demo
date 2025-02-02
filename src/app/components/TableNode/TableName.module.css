@@ -6,44 +6,50 @@
     --table-data-padding: 2px;
     --border-radius: 5px;
     --consistent-padding: 0.5rem;
+    --highlight-bg: #8fc1c3;
+    --selected-bg: #33ccff;
+    --primary-bg: #118178;
+    --primary-color: #ffffff;
+    --secondary-color: #053b42;
+}
+
+.dataSetContainer, .assetName {
+    padding: var(--consistent-padding);
+    border-radius: var(--border-radius);
+    border: 1px solid var(--secondary-color);
 }
 
 .dataSetContainer {
-    padding: var(--consistent-padding);
     background-color: #b3eff3;
     text-align: center;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-    border-radius: var(--border-radius);
-    border: 1px solid #053b42;
     min-width: var(--min-width);
     max-width: var(--max-width);
 }
 
 .assetName {
-    background-color: #118178;
-    color: #ffffff;
-    padding: var(--consistent-padding);
+    background-color: var(--primary-bg);
+    color: var(--primary-color);
     margin-bottom: 0.5rem;
     font-size: 14px;
     font-weight: bold;
-    border-radius: var(--border-radius);
-    border: 1px solid #053b42;
 }
 
-/*Style row showing fields count and show / collapse button*/
 .iconShowOrCollapse {
     padding-right: var(--consistent-padding);
 }
 
-.fieldsCount {
+.fieldsCount, .header, .row, .cell, .transformationRuleHyperlink {
     font-size: var(--table-row-font-size);
     line-height: var(--table-row-line-height);
+}
+
+.fieldsCount {
     padding-bottom: var(--consistent-padding);
     text-align: left;
     font-weight: bold;
 }
 
-/*Style div like table*/
 .table {
     display: flex;
     flex-direction: column;
@@ -55,12 +61,12 @@
 }
 
 .row:hover {
-    background-color: #8fc1c3;
+    background-color: var(--highlight-bg);
 }
 
 .rowSelected {
-    border: 1px solid #118178;
-    background-color: #33ccff;
+    border: 1px solid var(--primary-bg);
+    background-color: var(--selected-bg);
 }
 
 .cell, .header {
@@ -72,17 +78,11 @@
     text-align: left;
 }
 
-.header, .row, .cell {
-    font-size: var(--table-row-font-size);
-    line-height: var(--table-row-line-height);
-}
-
 .header {
     font-weight: bold;
 }
 
 .transformationRuleHyperlink {
-    font-size: var(--table-row-font-size); /* Extra small size */
     text-decoration: underline;
 }
 
