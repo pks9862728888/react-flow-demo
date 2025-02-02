@@ -20,7 +20,7 @@ import {initialEdges, initialNodes} from "@/app/constants/data";
 import {ReactFlowNode} from "@/app/types/ReactFlowNode";
 import {cloneDeep} from "lodash";
 import buildTableNodeGraph from "@/app/functions/tablenode/buildTableNodeGraph";
-import buildGraphLineageDataMap from "@/app/functions/tablenode/buildGraphLineageDataMap";
+import buildLineageDataMap from "@/app/functions/tablenode/buildLineageDataMap";
 import onTableNodeRowSelection from "@/app/components/DataLineageProviderFlow/onTableNodeRowSelection";
 
 const nodeClassName = (node: any) => node.type;
@@ -40,7 +40,7 @@ const DataLineageProviderFlow: React.FC = () => {
   // Build graph for nodes (adjacencyList) and lineage data (pre-compute for performance)
   useEffect((): void => {
     const adjList: Map<string, Set<string>> = buildTableNodeGraph(edges);
-    lineageDataRef.current = buildGraphLineageDataMap(adjList);
+    lineageDataRef.current = buildLineageDataMap(adjList);
   }, []);
 
   // Set expand node
