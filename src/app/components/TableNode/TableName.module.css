@@ -24,7 +24,8 @@
     color: #ffffff;
     padding: var(--consistent-padding);
     margin-bottom: 0.5rem;
-    font-size: 16px;
+    font-size: 14px;
+    font-weight: bold;
     border-radius: var(--border-radius);
     border: 1px solid #053b42;
 }
