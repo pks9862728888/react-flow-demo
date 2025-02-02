@@ -6,11 +6,12 @@
     --table-data-padding: 2px;
     --border-radius: 5px;
     --consistent-padding: 0.5rem;
-    --highlight-bg: #9ad3bc;
-    --selected-bg: #33ccff;
-    --primary-bg: #118178;
-    --primary-color: #ffffff;
-    --secondary-color: #053b42;
+    --highlight-bg: #9ad3bc; /* Soft Blue */
+    --selected-bg: #33ccff; /* Bright Blue */
+    --primary-bg: #118178; /* Dark Teal */
+    --primary-color: #ffffff; /* White */
+    --secondary-color: #053b42; /* Dark Teal */
+    --table-text-color: #000000; /* Black */
 }
 
 .dataSetContainer, .assetName {
@@ -42,6 +43,7 @@
 .fieldsCount, .header, .row, .cell, .transformationRuleHyperlink {
     font-size: var(--table-row-font-size);
     line-height: var(--table-row-line-height);
+    color: var(--table-text-color);
 }
 
 .fieldsCount {
@@ -72,7 +74,7 @@
 .cell, .header {
     flex: 1;
     padding: var(--table-data-padding);
-    border: 1px solid #ddd;
+    border: 1px solid rgba(17, 129, 120, 0.4);
     overflow: hidden;
     text-overflow: ellipsis;
     text-align: left;
