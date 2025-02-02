@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import DataLineageProviderFlow from "@/app/components/DataLineageProviderFlow";
+import DataLineageProviderFlow from "@/app/components/DataLineageProviderFlow/DataLineageProviderFlow";
 
 export default function Home(): React.JSX.Element {
   // Bootstrap rendering of app

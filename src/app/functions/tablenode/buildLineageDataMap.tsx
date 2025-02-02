@@ -1,6 +1,6 @@
 import {logMapSetObject} from "@/app/functions/utils/logUtils";
 
-const buildGraphLineageDataMap =
+const buildLineageDataMap =
   (adjList: Map<string, Set<string>>): Map<string, Set<string>> => {
     const lineageDataMap: Map<string, Set<string>> = new Map<string, Set<string>>();
     // for each keys in adjList pre-compute lineage traversal data
@@ -39,4 +39,4 @@ const buildLineageData =
     return lineageData;
   }
 
-export default buildGraphLineageDataMap;
+export default buildLineageDataMap;

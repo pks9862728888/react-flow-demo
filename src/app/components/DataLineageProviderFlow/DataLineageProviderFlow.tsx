@@ -17,48 +17,13 @@ import {nodeTypes} from "@/app/constants/nodeTypes";
 import {LineageDataType} from "@/app/types/LineageDataType";
 import {EdgeBase} from "@xyflow/system";
 import {initialEdges, initialNodes} from "@/app/constants/data";
-import {SelectedNodeType} from "@/app/types/SelectedNodeType";
 import {ReactFlowNode} from "@/app/types/ReactFlowNode";
 import {cloneDeep} from "lodash";
-import updateSelectionDataInTableNode from "@/app/functions/tablenode/updateSelectionDataInTableNode";
 import buildTableNodeGraph from "@/app/functions/tablenode/buildTableNodeGraph";
-import getEdgeHandleKeyPrefix from "@/app/functions/tablenode/getEdgeHandleKeyPrefix";
-import buildGraphLineageDataMap from "@/app/functions/tablenode/buildGraphLineageDataMap";
-import updateEdgeSelectionConnectedToTableDataRows
-  from "@/app/functions/tablenode/updateEdgeSelectionConnectedToTableDataRows";
+import buildLineageDataMap from "@/app/functions/tablenode/buildLineageDataMap";
+import onTableNodeRowSelection from "@/app/components/DataLineageProviderFlow/onTableNodeRowSelection";
 
 const nodeClassName = (node: any) => node.type;
-
-function doOnTableNodeRowSelection(
-  setNodes: (value: (((prevState: ReactFlowNode[]) => ReactFlowNode[]) | ReactFlowNode[])) => void,
-  lineageDataMap: Map<string, Set<string>>,
-  setEdges: (value: (((prevState: Edge[]) => Edge[]))) => void) {
-  const onNodeSelect: (selectedNode: SelectedNodeType) => void = (newSelectedNode: SelectedNodeType): void => {
-    const selNdDataId: string = newSelectedNode.nodeId;
-    const selNdDataRowId: string = newSelectedNode.dataRowId;
-    const selectedFieldKey: string = getEdgeHandleKeyPrefix(selNdDataId, selNdDataRowId);
-
-    // Update the node lineage data state
-    setNodes((oldNodes: ReactFlowNode[]): ReactFlowNode[] => {
-        const adjacentNodes: Set<string> = lineageDataMap.get(selectedFieldKey) ?? new Set<string>();
-        return oldNodes.map((oldNode: ReactFlowNode): ReactFlowNode => {
-          let newNode: ReactFlowNode = cloneDeep(oldNode);
-          updateSelectionDataInTableNode(newNode, adjacentNodes, selectedFieldKey);
-          return newNode;
-        });
-      }
-    );
-
-    // Update the edge selection behavior
-    setEdges((oldEdges: Edge[]): Edge[] => {
-      const lineageData: Set<string> = lineageDataMap.get(selectedFieldKey) ?? new Set<string>();
-      return oldEdges.map((oldEdge: Edge): Edge => {
-        return updateEdgeSelectionConnectedToTableDataRows(oldEdge, lineageData);
-      });
-    });
-  }
-  return onNodeSelect;
-}
 
 const DataLineageProviderFlow: React.FC = () => {
   // React hooks to store state
@@ -75,15 +40,27 @@ const DataLineageProviderFlow: React.FC = () => {
   // Build graph for nodes (adjacencyList) and lineage data (pre-compute for performance)
   useEffect((): void => {
     const adjList: Map<string, Set<string>> = buildTableNodeGraph(edges);
-    lineageDataRef.current = buildGraphLineageDataMap(adjList);
+    lineageDataRef.current = buildLineageDataMap(adjList);
   }, []);
+
+  // Set expand node
+  const onExpandNodeToggle = (shouldExpand: boolean): void => {
+    setNodes((oldNodes: ReactFlowNode[]): ReactFlowNode[] => {
+      return oldNodes.map((oldNode: ReactFlowNode): ReactFlowNode => {
+        let newNode: ReactFlowNode = cloneDeep(oldNode);
+        newNode.data.expandNode = shouldExpand;
+        return newNode;
+      });
+    });
+  }
 
   // Bind onNodeSelect event to lineageData for child components to trigger onNodeSelect action
   useEffect((): void => {
-    const onNodeSelect = doOnTableNodeRowSelection(
+    const onNodeSelect = onTableNodeRowSelection(
       setNodes, lineageDataRef.current, setEdges);
     nodes.forEach((node: ReactFlowNode): void => {
       node.data.triggerNodeSelection = onNodeSelect;
+      node.data.triggerNodeExpansionToggle = onExpandNodeToggle;
     });
   }, []);
 
