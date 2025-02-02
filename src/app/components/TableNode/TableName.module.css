@@ -3,11 +3,11 @@
     --max-width: 300px;
     --table-row-line-height: 13px;
     --table-row-font-size: 12px;
-    --table-data-padding: 2px;
+    --table-data-padding: 3px;
     --border-radius: 5px;
     --consistent-padding: 0.5rem;
     --highlight-bg: #9ad3bc; /* Soft Blue */
-    --selected-bg: #33ccff; /* Bright Blue */
+    --selected-bg: #87eef3; /* Bright Blue */
     --primary-bg: #118178; /* Dark Teal */
     --primary-color: #ffffff; /* White */
     --secondary-color: #053b42; /* Dark Teal */
@@ -78,10 +78,11 @@
 
 .header {
     font-weight: bold;
+    background-color: var(--highlight-bg);
 }
 
 .rowSelected {
-    border: 1px solid var(--primary-bg);
+    border: 1px solid var(--primary-bg) !important;
     background-color: var(--selected-bg);
 }
 
