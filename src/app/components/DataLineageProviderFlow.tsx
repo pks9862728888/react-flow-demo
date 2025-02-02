@@ -1,5 +1,5 @@
 "use client";
-import React, {RefObject, useCallback, useEffect, useRef} from 'react';
+import React, {RefObject, useCallback, useEffect, useRef, useState} from 'react';
 import {
   addEdge,
   Background,
@@ -78,12 +78,24 @@ const DataLineageProviderFlow: React.FC = () => {
     lineageDataRef.current = buildGraphLineageDataMap(adjList);
   }, []);
 
+  // Set expand node
+  const onExpandNodeToggle = (shouldExpand: boolean): void => {
+    setNodes((oldNodes: ReactFlowNode[]): ReactFlowNode[] => {
+      return oldNodes.map((oldNode: ReactFlowNode): ReactFlowNode => {
+        let newNode: ReactFlowNode = cloneDeep(oldNode);
+        newNode.data.expandNode = shouldExpand;
+        return newNode;
+      });
+    });
+  }
+
   // Bind onNodeSelect event to lineageData for child components to trigger onNodeSelect action
   useEffect((): void => {
     const onNodeSelect = doOnTableNodeRowSelection(
       setNodes, lineageDataRef.current, setEdges);
     nodes.forEach((node: ReactFlowNode): void => {
       node.data.triggerNodeSelection = onNodeSelect;
+      node.data.triggerNodeExpansionToggle = onExpandNodeToggle;
     });
   }, []);
 

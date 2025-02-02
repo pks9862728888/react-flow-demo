@@ -1,5 +1,5 @@
 "use client";
-import React, {ReactElement, useState} from "react";
+import React, {ReactElement} from "react";
 import styles from './TableName.module.css';
 import {Handle, Position} from "@xyflow/react";
 import {TableNodeDataType} from "@/app/types/tablenode/TableNodeDataType";
@@ -14,13 +14,14 @@ const heightBetweenTwoRows: number = 20;
 const transformationRuleHeight: number = 12;
 
 const TableNode = ({data}: { data: TableNodeDataType }): ReactElement => {
-  const [showTable, setShowTable] = useState(false);
-  const toggleShowTable = (): void => setShowTable(!showTable);
   const triggerNodeSelection = (dataRowId: string) => {
     if (data.triggerNodeSelection) {
       data.triggerNodeSelection({nodeId: data.id, dataRowId: dataRowId});
-    } else {
-      console.error("No triggerNodeSelection function found, data: ", data);
+    }
+  }
+  const triggerNodeExpansion = (): void => {
+    if (data.triggerNodeExpansionToggle) {
+      data.triggerNodeExpansionToggle(!data.expandNode);
     }
   }
   let transformationRuleAdjustedDelta: number = 0;
@@ -55,12 +56,13 @@ const TableNode = ({data}: { data: TableNodeDataType }): ReactElement => {
       />
       <div className={styles.dataSetContainer}>
         <div className={styles.assetName}>{data.datasetName}</div>
-        <div className={styles.fieldsCount} onClick={toggleShowTable}>
-          <span className={styles.iconShowOrCollapse}>{showTable ? <FaChevronUp /> : <FaChevronDown />}</span>
+        <div className={`${styles.fieldsCount} ${styles.cursorPointer}`} onClick={triggerNodeExpansion}
+             role="Toggle table node expansion">
+          <span className={styles.iconShowOrCollapse}>{data.expandNode ? <FaChevronUp/> : <FaChevronDown/>}</span>
           {data.dataRows ? data.dataRows.length : 0} fields
         </div>
         {/*Table starts here, show only when its in expanded mode*/}
-        {showTable && <div className={styles.table}>
+        {data.expandNode && <div className={styles.table}>
           <div className={styles.row}>
             {data.headerColumns?.map((headerCol: string) => (
               <div key={headerCol} className={styles.header}>{headerCol}</div>
@@ -68,8 +70,9 @@ const TableNode = ({data}: { data: TableNodeDataType }): ReactElement => {
           </div>
           {data.dataRows?.map((dataRow: any) => (
             <div key={dataRow.id}
-                 className={`${styles.row} ${dataRow.selected ? styles.rowSelected : ''}`}
-                 onClick={() => triggerNodeSelection(dataRow.id)}>
+                 className={`${styles.row} ${dataRow.selected ? styles.rowSelected : ''} ${styles.cursorPointer}`}
+                 onClick={() => triggerNodeSelection(dataRow.id)}
+                 role="Trigger data lineage field highlight">
               {/*Left handle for dataRow*/}
               <Handle
                 id={getEdgeHandleKey(data.id, dataRow.id, DASH_TARGET)}

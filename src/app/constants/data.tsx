@@ -10,6 +10,7 @@ export const initialNodes: ReactFlowNode[] = [
     data: {
       id: '1',
       datasetName: 'RawData',
+      expandNode: false,
       headerColumns: tableNodeHeaderCols,
       dataRows: [{
         id: '1',
@@ -37,6 +38,7 @@ export const initialNodes: ReactFlowNode[] = [
       id: '2',
       datasetName: 'JsonData',
       headerColumns: tableNodeHeaderCols,
+      expandNode: false,
       dataRows: [{
         id: '1',
         key: '2-1',
@@ -76,6 +78,7 @@ export const initialNodes: ReactFlowNode[] = [
       id: '3',
       datasetName: 'CDM',
       headerColumns: tableNodeHeaderCols,
+      expandNode: false,
       dataRows: [{
         id: '1',
         key: '3-1',
@@ -102,6 +105,7 @@ export const initialNodes: ReactFlowNode[] = [
       id: '4',
       datasetName: 'ASIC Data Model',
       headerColumns: tableNodeHeaderCols,
+      expandNode: false,
       dataRows: [{
         id: '1',
         key: '4-1',
@@ -128,6 +132,7 @@ export const initialNodes: ReactFlowNode[] = [
       id: '5',
       datasetName: 'MAS Data Model',
       headerColumns: tableNodeHeaderCols,
+      expandNode: false,
       dataRows: [{
         id: '1',
         key: '5-1',

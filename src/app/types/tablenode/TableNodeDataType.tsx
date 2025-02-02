@@ -6,5 +6,7 @@ export type TableNodeDataType = {
   datasetName: string,
   headerColumns: string[],
   dataRows: TableNodeDataRow[],
+  expandNode: boolean,
   triggerNodeSelection?: (selectedNode: SelectedNodeType) => void
+  triggerNodeExpansionToggle?: (shouldExpand: boolean) => void
 }
