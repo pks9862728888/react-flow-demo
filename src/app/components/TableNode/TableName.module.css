@@ -12,7 +12,8 @@
     --primary-color: #ffffff; /* White */
     --secondary-color: #053b42; /* Dark Teal */
     --table-text-color: #000000; /* Black */
-    --table-border-color: rgba(17, 129, 120, 0.4); /* light aqua */
+    --table-border-color: rgba(17, 129, 120, 0.4); /* Light Aqua */
+    --table-border-style: 1px solid var(--table-border-color);
 }
 
 .dataSetContainer, .assetName {
@@ -61,10 +62,22 @@
 
 .row {
     display: flex;
+    border-left: var(--table-border-style);
+    border-top: var(--table-border-style);
+    border-bottom: var(--table-border-style);
+    /*Right border will be taken care by cell styling*/
+}
+
+.row:not(:last-child) {
+    border-bottom: none;
 }
 
 .row:hover {
     background-color: var(--highlight-bg);
+}
+
+.header {
+    font-weight: bold;
 }
 
 .rowSelected {
@@ -78,12 +91,9 @@
     overflow: hidden;
     text-overflow: ellipsis;
     text-align: left;
-    border: 1px solid var(--table-border-color);
+    border-right: var(--table-border-style);
 }
 
-.header {
-    font-weight: bold;
-}
 
 .transformationRuleHyperlink {
     text-decoration: underline;
