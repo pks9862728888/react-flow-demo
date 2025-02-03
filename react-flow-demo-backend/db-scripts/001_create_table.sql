@@ -11,12 +11,12 @@ $$
 
         CREATE TABLE core.asset_data
         (
-            id         SERIAL PRIMARY KEY,
-            asset_id   INT REFERENCES asset (id),
-            field_name VARCHAR(255) NOT NULL,
-            key        VARCHAR(255) NOT NULL,
-            created    TIMESTAMP    NOT NULL,
-            updated    TIMESTAMP    NOT NULL
+            id       SERIAL PRIMARY KEY,
+            asset_id INT REFERENCES asset (id),
+            name     VARCHAR(255) NOT NULL,
+            key      VARCHAR(255) NOT NULL,
+            created  TIMESTAMP    NOT NULL,
+            updated  TIMESTAMP    NOT NULL
         );
 
         CREATE TABLE core.asset_data_transformation
@@ -36,8 +36,8 @@ $$
             id      SERIAL PRIMARY KEY,
             source  INT REFERENCES asset (id) NOT NULL,
             target  INT REFERENCES asset (id) NOT NULL,
-            created TIMESTAMP                    NOT NULL,
-            updated TIMESTAMP                    NOT NULL
+            created TIMESTAMP                 NOT NULL,
+            updated TIMESTAMP                 NOT NULL
         );
 
         CREATE TABLE core.asset_data_edge
@@ -47,8 +47,8 @@ $$
             target    INT REFERENCES asset (id)      NOT NULL,
             source_id INT REFERENCES asset_data (id) NOT NULL,
             target_id INT REFERENCES asset_data (id) NOT NULL,
-            created   TIMESTAMP                         NOT NULL,
-            updated   TIMESTAMP                         NOT NULL
+            created   TIMESTAMP                      NOT NULL,
+            updated   TIMESTAMP                      NOT NULL
         );
     END
 $$;

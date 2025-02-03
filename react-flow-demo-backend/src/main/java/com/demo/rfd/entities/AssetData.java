@@ -27,7 +27,7 @@ public class AssetData extends Audit {
   @JoinColumn(name = "asset_id", referencedColumnName = "id", nullable = false)
   private Asset asset;
 
-  private String fieldName;
+  private String name;
 
   private String key;
 
@@ -38,9 +38,5 @@ public class AssetData extends Audit {
   @OneToMany(mappedBy = "sourceAssetData")
   @ToString.Exclude
   private List<AssetDataEdge> assetDataSourceEdges;
-
-  public Long getAssetId() {
-    return asset.getId();
-  }
 
 }

@@ -49,7 +49,7 @@ const TableNode = ({data}: { data: TableNodeDataType }): ReactElement => {
         className={styles.tableConnectorLocation}
       />
       <div className={styles.dataSetContainer}>
-        <div className={styles.assetName}>{data.datasetName}</div>
+        <div className={styles.assetName}>{data.name}</div>
         <div className={`${styles.fieldsCount} ${styles.cursorPointer}`}
              onClick={() => data.triggerNodeExpansionToggle?.(!data.expandNode)}
              role="Toggle table node expansion">
@@ -76,7 +76,7 @@ const TableNode = ({data}: { data: TableNodeDataType }): ReactElement => {
                 isConnectable={true}
                 style={{top: calculateHeightFromTopForHandle(dataRow)}}
               />
-              <div className={styles.cell}>{dataRow.fieldName}</div>
+              <div className={styles.cell}>{dataRow.name}</div>
               <div className={styles.cell}>
                 <ul>
                   {dataRow.transformations?.map((transformation: any) => (

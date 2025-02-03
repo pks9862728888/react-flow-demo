@@ -1,7 +1,7 @@
 package com.demo.rfd.services;
 
 import com.demo.rfd.cache.LineageDataCache;
-import com.demo.rfd.exchanges.response.lineagedata.LineageDataResponseDto;
+import com.demo.rfd.exchanges.response.lineagedata.LineageResponseDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -21,7 +21,7 @@ public class LineageDataService {
   public void loadCacheWithLatestLineageData() {
     log.info("Warming cache with latest lineageData...");
     try {
-      LineageDataResponseDto lineageDataResponseDto = new LineageDataResponseDto();
+      LineageResponseDto lineageDataResponseDto = new LineageResponseDto();
       lineageDataLoader.loadLatestLineageData(lineageDataResponseDto);
       lineageDataCache.updateCache(LATEST, lineageDataResponseDto);
       log.info("Cache warmed: for key: {} value: {}", LATEST, lineageDataResponseDto);
@@ -31,7 +31,7 @@ public class LineageDataService {
     }
   }
 
-  public LineageDataResponseDto getLatestLineageData() {
+  public LineageResponseDto getLatestLineageData() {
     return lineageDataCache.getFromCache(LATEST);
   }
 }

@@ -7,6 +7,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class LineageNodeEdgeDto extends AbstractLineageDataEdgeDto {
+public class LineageFieldEdgeDto extends AbstractLineageDataEdgeDto {
   private String sourceHandle;
+  private String targetHandle;
 }

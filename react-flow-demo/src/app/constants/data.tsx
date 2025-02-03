@@ -9,14 +9,14 @@ export const initialNodes: ReactFlowNode[] = [
     type: 'tableNode',
     data: {
       id: '1',
-      datasetName: 'RawData',
+      name: 'RawData',
       expandNode: false,
       headerColumns: tableNodeHeaderCols,
       dataRows: [{
         id: '1',
         key: '1-1',
         colSeq: 0,
-        fieldName: 'fieldAN1',
+        name: 'fieldAN1',
         transformations: [{id: 1, ruleId: "TRNS_RULE_001", type: "ENRICHMENT"}],
         selected: false
       },
@@ -24,7 +24,7 @@ export const initialNodes: ReactFlowNode[] = [
           id: '2',
           key: '1-2',
           colSeq: 1,
-          fieldName: 'fieldBN2',
+          name: 'fieldBN2',
           transformations: [{id: 2, ruleId: "TRNS_RULE_002", type: "ENRICHMENT"}],
           selected: false
         }]
@@ -36,14 +36,14 @@ export const initialNodes: ReactFlowNode[] = [
     type: 'tableNode',
     data: {
       id: '2',
-      datasetName: 'JsonData',
+      name: 'JsonData',
       headerColumns: tableNodeHeaderCols,
       expandNode: false,
       dataRows: [{
         id: '1',
         key: '2-1',
         colSeq: 0,
-        fieldName: 'fieldAN2',
+        name: 'fieldAN2',
         selected: false,
         transformations: [
           {id: 1, ruleId: "JSON_RATES_001", type: "JSON"},
@@ -54,7 +54,7 @@ export const initialNodes: ReactFlowNode[] = [
           id: '2',
           key: '2-2',
           colSeq: 1,
-          fieldName: 'fieldBN2',
+          name: 'fieldBN2',
           selected: false,
           transformations: []
         },
@@ -62,7 +62,7 @@ export const initialNodes: ReactFlowNode[] = [
           id: '3',
           key: '2-3',
           colSeq: 2,
-          fieldName: 'fieldBN3',
+          name: 'fieldBN3',
           selected: false,
           transformations: [
             {id: 1, ruleId: "TRNS_RULE_001", type: "ENRICHMENT"}
@@ -76,14 +76,14 @@ export const initialNodes: ReactFlowNode[] = [
     type: 'tableNode',
     data: {
       id: '3',
-      datasetName: 'CDM',
+      name: 'CDM',
       headerColumns: tableNodeHeaderCols,
       expandNode: false,
       dataRows: [{
         id: '1',
         key: '3-1',
         colSeq: 0,
-        fieldName: 'fieldAN3',
+        name: 'fieldAN3',
         selected: false,
         transformations: [{id: 1, ruleId: "HarmonizedField001", type: "HRF"}]
       },
@@ -91,7 +91,7 @@ export const initialNodes: ReactFlowNode[] = [
           id: '2',
           key: '3-2',
           colSeq: 1,
-          fieldName: 'fieldBN3',
+          name: 'fieldBN3',
           selected: false,
           transformations: []
         }]
@@ -103,14 +103,14 @@ export const initialNodes: ReactFlowNode[] = [
     type: 'tableNode',
     data: {
       id: '4',
-      datasetName: 'ASIC Data Model',
+      name: 'ASIC Data Model',
       headerColumns: tableNodeHeaderCols,
       expandNode: false,
       dataRows: [{
         id: '1',
         key: '4-1',
         colSeq: 0,
-        fieldName: 'fieldAN4',
+        name: 'fieldAN4',
         selected: false,
         transformations: []
       },
@@ -118,7 +118,7 @@ export const initialNodes: ReactFlowNode[] = [
           id: '2',
           key: '4-2',
           colSeq: 1,
-          fieldName: 'fieldBN4',
+          name: 'fieldBN4',
           selected: false,
           transformations: []
         }]
@@ -130,14 +130,14 @@ export const initialNodes: ReactFlowNode[] = [
     type: 'tableNode',
     data: {
       id: '5',
-      datasetName: 'MAS Data Model',
+      name: 'MAS Data Model',
       headerColumns: tableNodeHeaderCols,
       expandNode: false,
       dataRows: [{
         id: '1',
         key: '5-1',
         colSeq: 0,
-        fieldName: 'fieldAN5',
+        name: 'fieldAN5',
         selected: false,
         transformations: []
       },
@@ -145,7 +145,7 @@ export const initialNodes: ReactFlowNode[] = [
           id: '2',
           key: '5-2',
           colSeq: 1,
-          fieldName: 'fieldBN5',
+          name: 'fieldBN5',
           selected: false,
           transformations: []
         },
@@ -153,7 +153,7 @@ export const initialNodes: ReactFlowNode[] = [
           id: '3',
           key: '5-3',
           colSeq: 2,
-          fieldName: 'fieldBN6',
+          name: 'fieldBN6',
           selected: false,
           transformations: []
         }

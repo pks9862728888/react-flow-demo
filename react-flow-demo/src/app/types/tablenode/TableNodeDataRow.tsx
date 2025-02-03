@@ -4,7 +4,7 @@ export type TableNodeDataRow = {
   id: string,
   key: string, // dataNodeId - dataRowId
   colSeq: number, // 0 indexed
-  fieldName: string,
+  name: string,
   selected: boolean,
   transformations: TableNodeDataRowTransformationType[]
 }

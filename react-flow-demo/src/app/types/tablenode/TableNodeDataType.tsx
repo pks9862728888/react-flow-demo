@@ -3,7 +3,7 @@ import {SelectedNodeType} from "@/app/types/SelectedNodeType";
 
 export type TableNodeDataType = {
   id: string,
-  datasetName: string,
+  name: string,
   headerColumns: string[],
   dataRows: TableNodeDataRow[],
   expandNode: boolean,

@@ -1,6 +1,6 @@
 package com.demo.rfd.controllers;
 
-import com.demo.rfd.exchanges.response.lineagedata.LineageDataResponseDto;
+import com.demo.rfd.exchanges.response.lineagedata.LineageResponseDto;
 import com.demo.rfd.services.LineageDataService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class LineageDataController {
   private final LineageDataService lineageDataService;
 
-  @GetMapping("/")
-  public ResponseEntity<LineageDataResponseDto> getLineageData() {
+  @GetMapping("/latest")
+  public ResponseEntity<LineageResponseDto> getLineageData() {
     return new ResponseEntity<>(lineageDataService.getLatestLineageData(), HttpStatus.OK);
   }
 }

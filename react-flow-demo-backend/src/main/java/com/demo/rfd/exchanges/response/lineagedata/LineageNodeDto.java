@@ -7,10 +7,8 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class LineageNodeDataEdgeDto {
+public class LineageNodeDto {
   private String id;
-  private String source;
-  private String target;
-  private String sourceHandle;
-  private String targetHandle;
+  private String type;
+  private LineageDataDto data;
 }

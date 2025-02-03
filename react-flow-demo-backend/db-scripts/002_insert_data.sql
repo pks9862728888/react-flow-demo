@@ -34,7 +34,7 @@ $$
         VALUES ('1', '1', '2', NOW(), NOW()),
                ('2', '2', '3', NOW(), NOW()),
                ('3', '3', '4', NOW(), NOW()),
-               ('4', '4', '5', NOW(), NOW());
+               ('4', '3', '5', NOW(), NOW());
 
         INSERT INTO core.asset_data_edge
         VALUES ('1', '1', '2', '1', '3', now(), now()),

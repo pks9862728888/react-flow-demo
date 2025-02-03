@@ -16,7 +16,6 @@ import '@xyflow/react/dist/style.css';
 import {nodeTypes} from "@/app/constants/nodeTypes";
 import {LineageDataType} from "@/app/types/LineageDataType";
 import {EdgeBase} from "@xyflow/system";
-import {initialEdges, initialNodes} from "@/app/constants/data";
 import {ReactFlowNode} from "@/app/types/ReactFlowNode";
 import {cloneDeep} from "lodash";
 import buildTableNodeGraph from "@/app/functions/tablenode/buildTableNodeGraph";
@@ -25,9 +24,8 @@ import onTableNodeRowSelection from "@/app/components/DataLineageProviderFlow/on
 
 const nodeClassName = (node: any) => node.type;
 
-const DataLineageProviderFlow: React.FC = () => {
+const DataLineageProviderFlow = ({lineageData}: { lineageData: LineageDataType }) => {
   // React hooks to store state
-  const lineageData: LineageDataType = {nodes: initialNodes, edges: initialEdges};
   const [nodes, setNodes, onNodesChange] = useNodesState(lineageData.nodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(lineageData.edges);
   const lineageDataRef: RefObject<Map<string, Set<string>>> = useRef<Map<string, Set<string>>>(

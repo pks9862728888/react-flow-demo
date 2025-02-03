@@ -11,11 +11,12 @@ import java.util.List;
 @Setter
 @ToString
 public class LineageDataRowDto {
-  private Long id;
-  private Long assetId;
-  private String fieldName;
+  private String id;
   private String key;
+  private Integer colSeq;
+  private String name;
   private final List<LineageDataTransformationDto> transformations = new ArrayList<>();
+  private boolean selected;
 
   public void addDataTransformation(LineageDataTransformationDto transformationDto) {
     transformations.add(transformationDto);
