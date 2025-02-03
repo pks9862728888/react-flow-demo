@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: react-flow-demo-backend
+  datasource:
+    url: jdbc:postgresql://localhost:5432/reactflowdemo
+    username: root
+    password: testpwd
+    driverClassName: org.postgresql.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+        hbm2ddl:
+          auto: none
