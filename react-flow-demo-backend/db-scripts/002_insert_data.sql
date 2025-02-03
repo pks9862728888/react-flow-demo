@@ -2,11 +2,11 @@ DO
 $$
     BEGIN
         INSERT INTO core.asset
-        VALUES ('1', 'RawData', 1, true, NOW(), NOW()),
-               ('2', 'JsonData', 1, true, NOW(), NOW()),
-               ('3', 'CDM', 1, true, NOW(), NOW()),
-               ('4', 'ASIC Data Model', 1, true, NOW(), NOW()),
-               ('5', 'MAS Data Model', 1, true, NOW(), NOW());
+        VALUES ('1', 'RawData', NOW(), NOW()),
+               ('2', 'JsonData', NOW(), NOW()),
+               ('3', 'CDM', NOW(), NOW()),
+               ('4', 'ASIC Data Model', NOW(), NOW()),
+               ('5', 'MAS Data Model', NOW(), NOW());
 
         INSERT INTO core.asset_data
         VALUES ('1', '1', 'fieldAN1', '1-1', NOW(), NOW()),
