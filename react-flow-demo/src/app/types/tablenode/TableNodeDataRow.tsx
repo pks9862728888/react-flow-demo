@@ -6,5 +6,6 @@ export type TableNodeDataRow = {
   colSeq: number, // 0 indexed
   name: string,
   selected: boolean,
-  transformations: TableNodeDataRowTransformationType[]
+  transformations: TableNodeDataRowTransformationType[],
+  showViewDetailsHyperlink: boolean
 }

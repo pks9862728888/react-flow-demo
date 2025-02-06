@@ -1,20 +1,19 @@
 "use client";
 import React, {ReactElement} from "react";
-import styles from './TableName.module.css';
+import styles from './TableNode.module.css';
 import {Handle, Position} from "@xyflow/react";
 import {TableNodeDataType} from "@/app/types/tablenode/TableNodeDataType";
 import {TableNodeDataRow} from "@/app/types/tablenode/TableNodeDataRow";
-import getEdgeHandleKey from "@/app/functions/tablenode/getEdgeHandleKey";
-import {DASH_SOURCE, DASH_TARGET} from "@/app/constants/appStringConstants";
 import getEdgeHandleKeyPrefix from "@/app/functions/tablenode/getEdgeHandleKeyPrefix";
 import {FaChevronDown, FaChevronUp} from "react-icons/fa";
+import TableDataRow from "@/app/components/TableNode/TableDataRow";
 
 const fixedHeightFromTop: number = 103;
 const heightBetweenTwoRows: number = 20;
 const transformationRuleHeight: number = 12;
 
 const TableNode = ({data}: { data: TableNodeDataType }): ReactElement => {
-  const triggerNodeSelection = (dataRowId: string) => {
+  const triggerNodeSelection = (dataRowId: string): void => {
     data.triggerNodeSelection?.({nodeId: data.id, dataRowId: dataRowId});
   }
   let transformationRuleAdjustedDelta: number = 0;
@@ -32,7 +31,8 @@ const TableNode = ({data}: { data: TableNodeDataType }): ReactElement => {
       heightMapCache.set(handleKey, top);
       // Update transformationRuleAdjustedDelta due to extra space occupied by transformations
       let transformationRuleRowsCount: number =
-        dataRow.transformations?.length > 0 ? (dataRow.transformations.length - 1) : 0;
+        !dataRow.showViewDetailsHyperlink && dataRow.transformations?.length > 0 ?
+          (dataRow.transformations.length - 1) : 0;
       transformationRuleAdjustedDelta = transformationRuleAdjustedDelta +
         transformationRuleRowsCount * transformationRuleHeight;
     }
@@ -63,41 +63,12 @@ const TableNode = ({data}: { data: TableNodeDataType }): ReactElement => {
               <div key={headerCol} className={styles.header}>{headerCol}</div>
             ))}
           </div>
-          {data.dataRows?.map((dataRow: any) => (
-            <div key={dataRow.id}
-                 className={`${styles.row} ${dataRow.selected ? styles.rowSelected : ''} ${styles.cursorPointer}`}
-                 onClick={() => triggerNodeSelection(dataRow.id)}
-                 role="Trigger data lineage field highlight">
-              {/*Left handle for dataRow*/}
-              <Handle
-                id={getEdgeHandleKey(data.id, dataRow.id, DASH_TARGET)}
-                type="target"
-                position={Position.Left}
-                isConnectable={true}
-                style={{top: calculateHeightFromTopForHandle(dataRow)}}
-              />
-              <div className={styles.cell}>{dataRow.name}</div>
-              <div className={styles.cell}>
-                <ul>
-                  {dataRow.transformations?.map((transformation: any) => (
-                    <li key={"li-dId" + data.id + "-drId-" + dataRow.id + "-tId-" + transformation.id}
-                        className={styles.li}>
-                      <a href="#" key={transformation.ruleId}
-                         className={styles.transformationRuleHyperlink}>{transformation.ruleId}</a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              {/*Right handle for dataRow*/}
-              <Handle
-                id={getEdgeHandleKey(data.id, dataRow.id, DASH_SOURCE)}
-                type="source"
-                position={Position.Right}
-                isConnectable={true}
-                style={{top: calculateHeightFromTopForHandle(dataRow)}}
-              />
-            </div>
-          ))}
+          {data.dataRows?.map((dataRow: any) => <TableDataRow
+            key={`data-row-${dataRow.id}`}
+            dataRow={dataRow}
+            triggerNodeSelection={triggerNodeSelection}
+            calculateHeightFromTopForHandle={calculateHeightFromTopForHandle}
+            dataId={data.id}/>)}
         </div>
         }
         {/*Right handle to connect to next node*/}

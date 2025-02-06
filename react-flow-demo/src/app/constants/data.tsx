@@ -18,7 +18,8 @@ export const initialNodes: ReactFlowNode[] = [
         colSeq: 0,
         name: 'fieldAN1',
         transformations: [{id: 1, ruleId: "TRNS_RULE_001", type: "ENRICHMENT"}],
-        selected: false
+        selected: false,
+        showViewDetailsHyperlink: true
       },
         {
           id: '2',
@@ -26,7 +27,8 @@ export const initialNodes: ReactFlowNode[] = [
           colSeq: 1,
           name: 'fieldBN2',
           transformations: [{id: 2, ruleId: "TRNS_RULE_002", type: "ENRICHMENT"}],
-          selected: false
+          selected: false,
+          showViewDetailsHyperlink: true
         }]
     },
     position: {x: 100, y: 100}
@@ -48,7 +50,8 @@ export const initialNodes: ReactFlowNode[] = [
         transformations: [
           {id: 1, ruleId: "JSON_RATES_001", type: "JSON"},
           {id: 2, ruleId: "JSON_RATES_003", type: "JSON"}
-        ]
+        ],
+        showViewDetailsHyperlink: true
       },
         {
           id: '2',
@@ -56,7 +59,8 @@ export const initialNodes: ReactFlowNode[] = [
           colSeq: 1,
           name: 'fieldBN2',
           selected: false,
-          transformations: []
+          transformations: [],
+          showViewDetailsHyperlink: true
         },
         {
           id: '3',
@@ -66,7 +70,8 @@ export const initialNodes: ReactFlowNode[] = [
           selected: false,
           transformations: [
             {id: 1, ruleId: "TRNS_RULE_001", type: "ENRICHMENT"}
-          ]
+          ],
+          showViewDetailsHyperlink: true
         }]
     },
     position: {x: 450, y: 100}
@@ -85,7 +90,8 @@ export const initialNodes: ReactFlowNode[] = [
         colSeq: 0,
         name: 'fieldAN3',
         selected: false,
-        transformations: [{id: 1, ruleId: "HarmonizedField001", type: "HRF"}]
+        transformations: [{id: 1, ruleId: "HarmonizedField001", type: "HRF"}],
+        showViewDetailsHyperlink: true
       },
         {
           id: '2',
@@ -93,7 +99,8 @@ export const initialNodes: ReactFlowNode[] = [
           colSeq: 1,
           name: 'fieldBN3',
           selected: false,
-          transformations: []
+          transformations: [],
+          showViewDetailsHyperlink: true
         }]
     },
     position: {x: 800, y: 100}
@@ -112,7 +119,8 @@ export const initialNodes: ReactFlowNode[] = [
         colSeq: 0,
         name: 'fieldAN4',
         selected: false,
-        transformations: []
+        transformations: [],
+        showViewDetailsHyperlink: true
       },
         {
           id: '2',
@@ -120,7 +128,8 @@ export const initialNodes: ReactFlowNode[] = [
           colSeq: 1,
           name: 'fieldBN4',
           selected: false,
-          transformations: []
+          transformations: [],
+          showViewDetailsHyperlink: true
         }]
     },
     position: {x: 1150, y: 100}
@@ -139,7 +148,8 @@ export const initialNodes: ReactFlowNode[] = [
         colSeq: 0,
         name: 'fieldAN5',
         selected: false,
-        transformations: []
+        transformations: [],
+        showViewDetailsHyperlink: true
       },
         {
           id: '2',
@@ -147,7 +157,8 @@ export const initialNodes: ReactFlowNode[] = [
           colSeq: 1,
           name: 'fieldBN5',
           selected: false,
-          transformations: []
+          transformations: [],
+          showViewDetailsHyperlink: true
         },
         {
           id: '3',
@@ -155,7 +166,8 @@ export const initialNodes: ReactFlowNode[] = [
           colSeq: 2,
           name: 'fieldBN6',
           selected: false,
-          transformations: []
+          transformations: [],
+          showViewDetailsHyperlink: true
         }
       ]
     },

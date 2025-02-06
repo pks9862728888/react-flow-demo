@@ -17,6 +17,7 @@ public class LineageDataRowDto {
   private String name;
   private final List<LineageDataTransformationDto> transformations = new ArrayList<>();
   private boolean selected;
+  private boolean showViewDetailsHyperlink = true;
 
   public void addDataTransformation(LineageDataTransformationDto transformationDto) {
     transformations.add(transformationDto);
