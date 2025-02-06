@@ -8,6 +8,7 @@
     --consistent-padding: 0.5rem;
     --highlight-bg: #9ad3bc; /* Soft Blue */
     --selected-bg: #87eef3; /* Bright Blue */
+    --dataset-container-bg: #e1fafd;
     --primary-bg: #118178; /* Dark Teal */
     --primary-color: #ffffff; /* White */
     --secondary-color: #053b42; /* Dark Teal */
@@ -23,7 +24,7 @@
 }
 
 .dataSetContainer {
-    background-color: #c8f8fb;
+    background-color: var(--dataset-container-bg);
     text-align: center;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
     min-width: var(--min-width);
