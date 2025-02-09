@@ -44,7 +44,7 @@ export default function Home(): React.JSX.Element {
 
   // Bootstrap rendering of app
   return (
-    <div style={{width: '100vw', height: '100vh'}}>
+    <div style={{width: '100vw', height: '90vh'}}>
       {loading && <div>Loading...</div>}
       {!loading && <DataLineageProviderFlow lineageData={lineageData}/>}
     </div>
