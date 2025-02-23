@@ -1,10 +1,10 @@
 "use client";
 import React, {useEffect, useState} from "react";
-import DataLineageProviderFlow from "@/app/components/DataLineage/DataLineageProviderFlow/DataLineageProviderFlow";
 import {LineageDataType} from "@/app/types/LineageDataType";
 import {ReactFlowNode} from "@/app/types/ReactFlowNode";
+import DataLineageProviderFlow from "@/app/components/DataLineage/DataLineageProviderFlow/DataLineageProviderFlow";
 
-export default function Home(): React.JSX.Element {
+const DataLineage = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const [lineageData, setLineageData] = useState<LineageDataType>({nodes: [], edges: []});
   // Fetch nodes and edges
@@ -50,3 +50,5 @@ export default function Home(): React.JSX.Element {
     </div>
   );
 }
+
+export default DataLineage;

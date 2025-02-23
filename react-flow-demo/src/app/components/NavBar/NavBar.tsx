@@ -9,6 +9,10 @@ const NavBar = () => {
         <AdbIcon sx={{display: {xs: 'none', md: 'flex'}, mr: 1}}/>
         <h5>DATA LINEAGE DEMO</h5>
       </span>
+      <ul className={styles.navLinks}>
+        <li className={styles.navbarLink}>Data Lineage</li>
+        <li className={styles.navbarLink}>Trade Observability</li>
+      </ul>
     </nav>
   );
 }
