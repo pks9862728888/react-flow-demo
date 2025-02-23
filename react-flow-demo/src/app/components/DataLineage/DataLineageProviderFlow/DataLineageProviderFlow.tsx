@@ -20,7 +20,7 @@ import {ReactFlowNode} from "@/app/types/ReactFlowNode";
 import {cloneDeep} from "lodash";
 import buildTableNodeGraph from "@/app/functions/tablenode/buildTableNodeGraph";
 import buildLineageDataMap from "@/app/functions/tablenode/buildLineageDataMap";
-import onTableNodeRowSelection from "@/app/components/DataLineageProviderFlow/onTableNodeRowSelection";
+import onTableNodeRowSelection from "@/app/components/DataLineage/DataLineageProviderFlow/onTableNodeRowSelection";
 
 const nodeClassName = (node: any) => node.type;
 

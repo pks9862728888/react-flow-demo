@@ -3,9 +3,9 @@ import {Edge} from "@xyflow/react";
 import {SelectedNodeType} from "@/app/types/SelectedNodeType";
 import getEdgeHandleKeyPrefix from "@/app/functions/tablenode/getEdgeHandleKeyPrefix";
 import {cloneDeep} from "lodash";
-import updateSelectionDataInTableNode from "@/app/components/DataLineageProviderFlow/updateSelectionDataInTableNode";
+import updateSelectionDataInTableNode from "@/app/components/DataLineage/DataLineageProviderFlow/updateSelectionDataInTableNode";
 import updateEdgeSelectionConnectedToTableDataRows
-  from "@/app/components/DataLineageProviderFlow/updateEdgeSelectionConnectedToTableDataRows";
+  from "@/app/components/DataLineage/DataLineageProviderFlow/updateEdgeSelectionConnectedToTableDataRows";
 
 const onTableNodeRowSelection = (
   setNodes: (value: (((prevState: ReactFlowNode[]) => ReactFlowNode[]) | ReactFlowNode[])) => void,

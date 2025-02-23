@@ -1,6 +1,6 @@
 "use client";
 import React, {useEffect, useState} from "react";
-import DataLineageProviderFlow from "@/app/components/DataLineageProviderFlow/DataLineageProviderFlow";
+import DataLineageProviderFlow from "@/app/components/DataLineage/DataLineageProviderFlow/DataLineageProviderFlow";
 import {LineageDataType} from "@/app/types/LineageDataType";
 import {ReactFlowNode} from "@/app/types/ReactFlowNode";
 

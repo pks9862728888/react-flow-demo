@@ -6,7 +6,7 @@ import {TableNodeDataType} from "@/app/types/tablenode/TableNodeDataType";
 import {TableNodeDataRow} from "@/app/types/tablenode/TableNodeDataRow";
 import getEdgeHandleKeyPrefix from "@/app/functions/tablenode/getEdgeHandleKeyPrefix";
 import {FaChevronDown, FaChevronUp} from "react-icons/fa";
-import TableDataRow from "@/app/components/TableNode/TableDataRow";
+import TableDataRow from "@/app/components/DataLineage/TableNode/TableDataRow";
 
 const fixedHeightFromTop: number = 103;
 const heightBetweenTwoRows: number = 20;

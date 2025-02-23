@@ -3,7 +3,7 @@ import getEdgeHandleKey from "@/app/functions/tablenode/getEdgeHandleKey";
 import {DASH_SOURCE, DASH_TARGET} from "@/app/constants/appStringConstants";
 import React, {useState} from "react";
 import {TableDataRowPropType} from "@/app/types/proptypes/TableDataRowPropType";
-import ViewTableFieldDetailDialog from "@/app/components/ViewTableFieldDetailDialog/ViewTableFieldDetailDialog";
+import ViewTableFieldDetailDialog from "@/app/components/DataLineage/ViewTableFieldDetailDialog/ViewTableFieldDetailDialog";
 import styles from './TableNode.module.css';
 import stylesTdr from './TableDataRow.module.css';
 
